@@ -1,6 +1,5 @@
 from seleniumbase import BaseCase
 
-
 class TestHomePage(BaseCase):
     def test_verify_page_title_and_url(self):
         self.open("https://practice-react.sdetunicorns.com/")
@@ -11,9 +10,21 @@ class TestHomePage(BaseCase):
 
     def test_search_flow(self):
         self.open("https://practice-react.sdetunicorns.com/")
+     
+        self.click('//button[@class="search-active"]')
+        
+        self.type('//input[@placeholder="Search"]', 'Lenovo\n')
+    
+        self.assert_text('Showing Results for Lenovo', '//h3[@class="text-center py-3"]')
+        self.wait(5)
 
-        self.click('button[class="search-active"]')
+    def test_nav_links(self):
+        self.open("https://practice-react.sdetunicorns.com/")
 
-        self.type('input[placeholder="Search"]', 'Lenovo\n')
+        self.assert_text('Products','.main-menu li:nth-child(2)')
 
-        self.assert_text('Showing Results for Lenovo', 'h3[class="text-center py-3"]')
+        expected_nav_text = ['Home', 'Products', 'About Us', 'Contact', 'Upload']
+
+        for i, text in enumerate(expected_nav_text, start=1):
+            print(i, text)
+            self.assert_text(text, f'.main-menu li:nth-child({i})')
