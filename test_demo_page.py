@@ -55,3 +55,46 @@ class TestDemoPage(BaseCase):
         self.check_if_unchecked('#checkBox1')
         self.assert_true(self.is_selected('#checkBox1'))
         self.assert_element_visible('#drop1')
+
+    def test_iframe(self):
+        self.open("https://seleniumbase.io/demo_page")
+
+        self.assert_element_not_visible('h4')
+
+        self.switch_to_frame('#myFrame2')
+        self.assert_text('iFrame Text', 'h4')
+
+        self.assert_element('h4')
+        self.switch_to_default_content()
+
+        self.assert_element('#progressBar')
+
+    def test_checkboxIniframe(self):
+        self.open("https://seleniumbase.io/demo_page")
+
+        self.assert_element_not_visible('#checkBox6')
+
+        self.switch_to_frame('#myFrame3')
+        #self.wait(3)
+
+        self.check_if_unchecked('#checkBox6')
+
+        #self.wait(3)
+
+        self.assert_true(self.is_checked('#checkBox6'))
+
+        self.switch_to_default_content()
+
+        self.assert_element_visible('#progressBar')
+    
+    def test_hoverDrop(self):
+        self.open("https://seleniumbase.io/demo_page")
+
+        self.hover_and_click('#myDropdown', '#dropOption2')
+        #self.hover('#myDropdown')
+
+        #self.click('#dropOption2')
+
+        self.assert_text('Link Two Selected', '#tbodyId h3')
+
+        self.wait(3)

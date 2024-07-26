@@ -28,3 +28,12 @@ class TestHomePage(BaseCase):
         for i, text in enumerate(expected_nav_text, start=1):
             print(i, text)
             self.assert_text(text, f'.main-menu li:nth-child({i})')
+
+    def test_new_tab(self):
+        self.open("https://practice-react.sdetunicorns.com/")
+
+        self.click('a[href="https://sdetunicorns.com"]')
+        self.switch_to_newest_tab()
+        self.assert_title_contains('Master')
+        self.switch_to_default_tab()
+        self.assert_title_contains('Practice')
