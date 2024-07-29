@@ -1,6 +1,6 @@
 from seleniumbase import BaseCase
-import os.path
 from pages.upload_page import UploadPage
+from utils.helpers import get_image_path
 
 
 class TestUploadPage(BaseCase):
@@ -9,7 +9,7 @@ class TestUploadPage(BaseCase):
         uploadpage = UploadPage(self)
         uploadpage.open()
 
-        file_path = os.path.abspath("data/seleniumbase_logo.png")
+        file_path = get_image_path("seleniumbase_logo.png")
 
         uploadpage.upload_single_file(file_path)
 
@@ -23,8 +23,8 @@ class TestUploadPage(BaseCase):
         uploadpage.open()
 
         file_paths = [
-            os.path.abspath("data/seleniumbase_logo.png"),
-            os.path.abspath("data/seleniumbase_logo2.png"),
+            get_image_path("seleniumbase_logo.png"),
+            get_image_path("seleniumbase_logo2.png"),
         ]
 
         uploadpage.upload_multiple_files(file_paths)
