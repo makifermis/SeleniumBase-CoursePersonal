@@ -1,5 +1,6 @@
 from seleniumbase import BaseCase
 from pages.home_page import HomePage
+import pytest
 
 
 class TestHomePage(BaseCase):
@@ -15,6 +16,7 @@ class TestHomePage(BaseCase):
         print("Log Out")
         super().tearDown()
 
+    @pytest.mark.smoke
     def test_verify_page_title_and_url(self):
 
         self.assert_url_contains("sdetunicorns")

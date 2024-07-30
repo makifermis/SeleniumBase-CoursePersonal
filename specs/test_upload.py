@@ -1,10 +1,12 @@
 from seleniumbase import BaseCase
 from pages.upload_page import UploadPage
 from utils.helpers import get_image_path
+import pytest
 
 
 class TestUploadPage(BaseCase):
 
+    @pytest.mark.smoke
     def test_upload_1_single_file(self):
         uploadpage = UploadPage(self)
         uploadpage.open()
