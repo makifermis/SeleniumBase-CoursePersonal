@@ -35,5 +35,3 @@ class HomePage:
         :param expected_nav_text: A list of expected text for each nav link
         """
         assert_list_text(self.sb, self.nav_links, expected_nav_text)
-        # for i, text in enumerate(expected_nav_text, start=1):
-        #     self.sb.assert_text(text, f'{self.nav_links}:nth-child({i})')
