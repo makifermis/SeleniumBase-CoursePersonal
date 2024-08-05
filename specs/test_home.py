@@ -6,7 +6,7 @@ import pytest
 class TestHomePage(BaseCase):
 
     def setUp(self, masterqa_mode=False):
-        super().setUp(masterqa_mode)  # call the setyp of the parent class if needed
+        super().setUp(masterqa_mode) # call the setyp of the parent class if needed
         self.homepage = HomePage(self)
         self.homepage.open()
 
