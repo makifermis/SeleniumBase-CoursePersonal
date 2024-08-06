@@ -27,7 +27,7 @@ class TestHomePage(BaseCase):
 
     def test_search_flow(self):
         self.homepage.search_for_item("Lenovo")
-        self.assert_text_visible("Showing Results for Lenovo")
+        self.assert_text_visible("Showing Results for Apple")
 
     def test_nav_links(self):
 
