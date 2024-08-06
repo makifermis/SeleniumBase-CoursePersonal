@@ -47,13 +47,11 @@ jobs:
     - name: Run pytest
       id: test_step
       run: |
-        pipenv run pytest specs/test_home.py -n=4 --browser=chrome --headless -v -s --dashboard --html=report/report.html
-      continue-on-error: true
+        pipenv run pytest specs/test_home.py -n=4 --browser=chrome --headless -v -s --dashboard --html=report/report.html     
     - name: Upload Artifacts
+      if: always()
       uses: actions/upload-artifact@v4
       with:
-          name: my-artifact
+          name: HTML Report
           path: report/
-    - name: Fail job is tests failed
-      if: steps.test_step.outcome == 'failure'
-      run: exit 1
+  
