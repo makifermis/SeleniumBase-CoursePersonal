@@ -2,7 +2,6 @@ from seleniumbase import BaseCase
 from pages.home_page import HomePage
 import pytest
 
-
 class TestHomePage(BaseCase):
 
     def setUp(self, masterqa_mode=False):
